@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Rules</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <form id="ruleForm">
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" minlength="4" maxlength="16" pattern="[A-Za-z]{4,16}" required>
+        <br>
+        <label for="source_ip">Source IP:</label>
+        <input type="text" id="source_ip" name="source_ip" required>
+        <br>
+        <label for="destination_ip">Destination IP:</label>
+        <input type="text" id="destination_ip" name="destination_ip" required>
+        <br>
+        <label for="port">Port:</label>
+        <input type="number" id="port" name="port" min="1" max="65536" required>
+        <br>
+        <label for="protocol">Protocol:</label>
+        <select id="protocol" name="protocol">
+            <option value="TCP">TCP</option>
+            <option value="UDP">UDP</option>
+            <option value="ICMP">ICMP</option>
+        </select>
+        <br>
+        <label for="action">Action:</label>
+        <select id="action" name="action">
+            <option value="Allow">Allow</option>
+            <option value="Block">Block</option>
+        </select>
+        <br>
+        <button type="submit">Add Rule</button>
+    </form>
+    <hr>
+    
+    <table class="table" id="rulesTable">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Source IP</th>
+            <th>Destination IP</th>
+            <th>Port</th>
+            <th>Protocol</th>
+            <th>Action</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+    
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
